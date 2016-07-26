@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Date Validations with jQuery UI</title>
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.css">  <!-- normalizes CSS & HTML -->
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css"> <!-- grabs jQuery UI CSS -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>  <!-- grabs jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script> <!-- grabs jQuery UI library -->
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$('#vacaDateBegin').datepicker(); // runs .datepicker() function for #vacaDateBegin
+		$('#vacaDateEnd').datepicker(); // runs .datepicker() for #vacaDateEnd
+		$('#firstName').focus();
+		$('#submitButton').click(function() { // when submit button is clicked do the following:
+				var vacaForm = $('#vaca').serializeArray(); // this takes the form and serializes it as an array
+				if ( vacaForm[0].value.length < 1 ) {  // vacaForm[0].value will give us the value of the first item in the array
+					$('#first-name-alert').html('<p class="alert">Please enter your first name.</p>');
+				};
+				if ( vacaForm[1].value.length < 1 ) {
+					$('#last-name-alert').html('<p class="alert">Please enter your last name.</p>');
+				};
+				if ( vacaForm[2].value.length < 1 ) {
+					$('#vaca-date-begin').html('<p class="alert">Please enter your departure date.</p>');
+				};
+				if ( vacaForm[3].value.length < 1 ) {
+					$('#vaca-date-end').html('<p class="alert">Please enter your departure date.</p>');
+				};
+
+				if ( vacaForm[3].value <= vacaForm[2].value ) {
+					$('#vaca-date-begin').html('<p class="alert">Your departure date cannot be after your return date.</p>');
+					$('#vaca-date-end').html('<p class="alert">Your return date cannot be before your departure date.</p>');
+				}; 
+				if ( vacaForm[0].value.length > 1 && vacaForm[1].value.length > 1 && vacaForm[2].value.length > 9 && vacaForm[3].value.length > 9 && vacaForm[3].value > vacaForm[2].value ) {
+					alert('Thank you, ' + vacaForm[0].value + ' ' + vacaForm[1].value + ', your reservation for: ' + vacaForm[2].value + ' through ' + vacaForm[3].value + ' has been confirmed!' );
+					$('#first-name-alert, #last-name-alert, #vaca-date-begin, #vaca-date-end').html('');
+					$('input[type="text"]').val("");
+					$('#firstName').focus();
+					return false;
+				} else {
+					alert('There was a problem submitting your form. Please check the errors highlighted and try again.');
+					return false;
+				};
+		}); // end click function for submit button
+	}); // end doc ready
+	</script>
+</head>
+<body>
+	<div id="wrapper">
+		<h1>Coding Dojo Form Validation Project</h1>
+		<p>Fill out the form below to see jQuery functions being used to validate a form prior to submission.</p>
+		<h2>Start your vacation!</h2>
+		<form id="vaca" method="post" action="process.php">
+			<label>
+				<p>Please enter your first name: <input type="text" name="first-name" placeholder="ie, John" id="firstName"></p>
+				<div id="first-name-alert"></div>
+			</label>
+			<label>
+				<p>Please enter your last name: <input type="text" name="last-name" placeholder="ie, Doe" id="lastName"></p>
+				<div id="last-name-alert"></div>
+			</label>
+			<label>
+				<p>Please enter your desired start date:<input type="text" name="vacation-date" placeholder="ie, 08/19/2016" id="vacaDateBegin"></p>
+				<div id="vaca-date-begin"></div>
+			</label>
+			<label>
+				<p>Please enter your desired return date:<input type="text" name="vacation-date" placeholder="ie, 08/29/2016" id="vacaDateEnd"></p>
+				<div id="vaca-date-end"></div>
+			</label>
+			<input type="submit" value="Submit Vacation Request" id="submitButton">
+		</form>
+	</div>
+</body>
+</html>

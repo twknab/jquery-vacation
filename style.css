@@ -1,0 +1,106 @@
+/* CSS Sheet for Date Validations Project - Tim Knab - July 2016 */
+
+/*****************************/
+/*		  CSS RESET 		*/
+/****************************/
+* {
+	padding: 0;
+	margin: 0;
+	font-weight: inherit;
+	font-family: inherit;
+	font-style: inherit;
+	font-size: 100%;
+}
+
+/*****************************/
+/*		MAIN STYLINGS		*/
+/****************************/
+
+body {
+	padding: 50px;
+	background-image: url('images/plane-bg.jpg');
+	background-size: cover;
+	letter-spacing: 0.02em;
+}
+
+h1 {
+	font-weight: bold;
+	text-align: center;
+	line-height: 1.2em;
+}
+
+h2 {
+	padding-top: 50px;
+	text-transform: uppercase;
+	font-weight: bold;
+	font-size: 1.5em;
+	text-align: center;
+}
+
+form {
+	
+}
+
+	form input {
+		padding: 10px;
+		width: 300px;
+		margin: 15px auto 0px auto;
+		display: block;
+	}
+
+		form input:focus {
+			outline: 5px solid #ff5252;
+		}
+
+	form label {
+		padding: 10px;
+
+	}
+
+	form input[type='submit']{
+		padding: 15px;
+	    margin: 20px auto 30px auto;
+	    display: block;
+	    background-color: #52B2FF;
+	    border: none;
+	    color: white;
+	    font-weight: bold;
+	    text-transform: uppercase;
+	    border-radius: 25px;
+	    -webkit-border-radius: 25px;
+	    -moz-border-radius: 25px;
+	    border: 2px solid #f4f8f7;
+	}
+
+			form input[type='submit']:focus {
+				outline: none;
+			}
+
+			form input[type='submit']:hover {
+				background-color: #ff5252; 
+			}
+
+			form input[type='submit']:active {
+				background-color: #c12d2d;
+			}
+
+
+#wrapper {
+	width: 400px;
+	padding: 40px;
+	border-radius: 25px;
+	-moz-border-radius: 25px;
+	-webkit-border-radius: 25px;
+	background: ##647487;
+	background-image: url("images/zenbg-1.png"), url("images/zenbg-2.png");
+	background-repeat: repeat-x, repeat;
+	color: #ffffff;
+	text-shadow: 1px 1px #000;
+	border: 10px solid #52B2FF;
+}
+
+.alert {
+	color: red;
+	font-weight: bold;
+	margin: 15px 0px 0px 50px;
+}
