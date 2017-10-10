@@ -1,1 +1,0 @@
-This project uses jQuery for validate a form before submitting. For the form to be accepted, all fields must be filled out, and the departure date must be lesser than the return date.
